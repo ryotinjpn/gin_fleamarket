@@ -1,10 +1,10 @@
 package main
 
 import (
-	"gin-fleamarket/controllers"
-	"gin-fleamarket/infra"
-	"gin-fleamarket/repositories"
-	"gin-fleamarket/services"
+	"gin_fleamarket/controllers"
+	"gin_fleamarket/infra"
+	"gin_fleamarket/repositories"
+	"gin_fleamarket/services"
 
 	"github.com/gin-gonic/gin"
 )
