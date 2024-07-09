@@ -2,9 +2,9 @@
 package services
 
 import (
-	"gin-fleamarket/dto"
-	"gin-fleamarket/models"
-	"gin-fleamarket/repositories"
+	"gin_fleamarket/dto"
+	"gin_fleamarket/models"
+	"gin_fleamarket/repositories"
 )
 
 type IItemService interface {

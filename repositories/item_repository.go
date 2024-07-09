@@ -3,7 +3,7 @@ package repositories
 
 import (
 	"errors"
-	"gin-fleamarket/models"
+	"gin_fleamarket/models"
 
 	"gorm.io/gorm"
 )

@@ -2,8 +2,8 @@
 package controllers
 
 import (
-	"gin-fleamarket/dto"
-	"gin-fleamarket/services"
+	"gin_fleamarket/dto"
+	"gin_fleamarket/services"
 	"net/http"
 	"strconv"
 

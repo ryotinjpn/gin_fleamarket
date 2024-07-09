@@ -1,8 +1,8 @@
 package main
 
 import (
-	"gin-fleamarket/infra"
-	"gin-fleamarket/models"
+	"gin_fleamarket/infra"
+	"gin_fleamarket/models"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module gin-fleamarket
+module gin_fleamarket
 
 go 1.22.3
 
