@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type IItemContoroller interface {
+type IItemController interface {
 	FindAll(ctx *gin.Context)
 	FindById(ctx *gin.Context)
 	Create(ctx *gin.Context)
@@ -18,15 +18,15 @@ type IItemContoroller interface {
 	Delete(ctx *gin.Context)
 }
 
-type ItemContoroller struct {
+type ItemController struct {
 	service services.IItemService
 }
 
-func NewItemController(service services.IItemService) IItemContoroller {
-	return &ItemContoroller{service: service}
+func NewItemController(service services.IItemService) IItemController {
+	return &ItemController{service: service}
 }
 
-func (c *ItemContoroller) FindAll(ctx *gin.Context) {
+func (c *ItemController) FindAll(ctx *gin.Context) {
 	items, err := c.service.FindAll()
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Unexpected error"})
@@ -36,7 +36,7 @@ func (c *ItemContoroller) FindAll(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"data": items})
 }
 
-func (c *ItemContoroller) FindById(ctx *gin.Context) {
+func (c *ItemController) FindById(ctx *gin.Context) {
 	itemId, err := strconv.ParseUint(ctx.Param("id"), 10, 64)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": "invalid id"})
@@ -55,7 +55,7 @@ func (c *ItemContoroller) FindById(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"data": item})
 }
 
-func (c *ItemContoroller) Create(ctx *gin.Context) {
+func (c *ItemController) Create(ctx *gin.Context) {
 	var input dto.CreateItemInput
 	if err := ctx.ShouldBindJSON(&input); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -69,7 +69,7 @@ func (c *ItemContoroller) Create(ctx *gin.Context) {
 	ctx.JSON(http.StatusCreated, gin.H{"data": newItem})
 }
 
-func (c *ItemContoroller) Update(ctx *gin.Context) {
+func (c *ItemController) Update(ctx *gin.Context) {
 	itemId, err := strconv.ParseUint(ctx.Param("id"), 10, 64)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Invalid id"})
@@ -93,7 +93,7 @@ func (c *ItemContoroller) Update(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"date": updatedItem})
 }
 
-func (c *ItemContoroller) Delete(ctx *gin.Context) {
+func (c *ItemController) Delete(ctx *gin.Context) {
 	itemId, err := strconv.ParseUint(ctx.Param("id"), 10, 64)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Invalid id"})
